@@ -28,8 +28,8 @@ public class EmployeeService {
                 employee.getEmail());
     }
 
-    public List<Employeedto> getAll() {
-        return repo.find();
+    public List<Employee> getAll() {
+        return repo.findAll();
     }
 
     public Employeedto getEmployeeById(Long id) {
