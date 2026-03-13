@@ -1,9 +1,9 @@
 package com.example.dtoexample.dto;
 
-
 public class Employeedto {
 
     private Long id;
+
     private String name;
     private String email;
 

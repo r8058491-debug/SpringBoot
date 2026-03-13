@@ -1,5 +1,6 @@
 package com.example.dtoexample.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,11 +10,23 @@ import jakarta.persistence.Id;
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String name;
+    @Column(unique = true)
     private String email;
+    private String password;
+
+    public Employee() {
+    }
+
+    public Employee(String n, String e, String p) {
+        this.name = n;
+        this.email = e;
+        this.password = p;
+    }
+
     public Long getId() {
         return id;
     }
@@ -46,15 +59,4 @@ public class Employee {
         this.password = password;
     }
 
-    private String password;
-
-    public Employee(){}
-
-    public Employee(String n,String e,String p){
-        this.name=n;
-        this.email=e;
-        this.password=p;
-    }
-
-    
 }
