@@ -27,9 +27,6 @@ public class OrdersController {
 
     @PutMapping("/update/{id}")
     public Orders updateOrders(@PathVariable Long id, @RequestBody Orders orders) {
-        Orders o = oservice.getOrderById(id).orElseThrow(() -> new RuntimeException("Error aa gya yaar " + id));
-        o.setProductName(orders.getProductName());
-        o.setPrice(orders.getPrice());
         return oservice.updateOrder(id, orders);
     }
 

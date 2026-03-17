@@ -1,5 +1,7 @@
 package com.example.customer_orders.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,24 +14,32 @@ public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderid;
+    private Long id;
 
     private String productName;
     private double price;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
+    @JsonIgnore
     private Customer customer;
 
     public Orders() {
     }
 
-    public Orders(String p, double pr,Customer c) {
+    public Orders(String p, double pr, Customer c) {
         this.productName = p;
         this.price = pr;
-        this.customer=c;
+        this.customer = c;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getProductName() {
         return productName;
@@ -47,14 +57,6 @@ public class Orders {
         this.price = price;
     }
 
-    public Long getOrderid() {
-        return orderid;
-    }
-
-    public void setOrderid(Long orderid) {
-        this.orderid = orderid;
-    }
-
     public Customer getCustomer() {
         return customer;
     }
@@ -62,6 +64,8 @@ public class Orders {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
     
 
+    
 }
