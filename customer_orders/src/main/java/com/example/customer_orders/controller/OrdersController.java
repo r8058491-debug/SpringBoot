@@ -3,6 +3,7 @@ package com.example.customer_orders.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -11,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.customer_orders.entity.Orders;
-import com.example.customer_orders.service.CustomerService;
+import com.example.customer_orders.service.OrdersService;
 @RestController
 @RequestMapping("/orders")
 public class OrdersController {
 
     @Autowired
-    private CustomerService oservice;
+    private OrdersService oservice;
 
     @GetMapping("/get/{id}")
     public Optional<Orders> getOrdersById(@PathVariable Long id) {
@@ -27,6 +28,11 @@ public class OrdersController {
     @PutMapping("/update/{id}")
     public Orders updateOrders(@PathVariable Long id, @RequestBody Orders orders) {
         return oservice.updateOrder(id, orders);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteOrders(@PathVariable Long id){
+        return oservice.deleteOrder(id);
     }
 
 }

@@ -9,15 +9,11 @@ import org.springframework.stereotype.Service;
 import com.example.customer_orders.entity.Customer;
 import com.example.customer_orders.entity.Orders;
 import com.example.customer_orders.repository.CustomerRepo;
-import com.example.customer_orders.repository.OrdersRepo;
 
 @Service
 public class CustomerService {
     @Autowired
     private CustomerRepo repo;
-
-    @Autowired
-    private OrdersRepo orepo;
 
     public Customer createCustomer(Customer customer) {
         List<Orders> orders = customer.getOrder();
@@ -59,23 +55,5 @@ public class CustomerService {
         System.out.println("Deleted Successfully..");
     }
 
-      public List<Orders> getAll(){
-        return orepo.findAll();
-    }
-    public Optional<Orders> getOrderById(Long Id) {
-        return orepo.findById(Id);
-    }
-
-    public Orders updateOrder(Long id,Orders orders){
-        Orders o=orepo.findById(id).orElseThrow(() -> new RuntimeException("Error Hai bhai thik karle orders mein :"+id));
-        o.setProductName(orders.getProductName());
-        o.setPrice(orders.getPrice());
-        return orepo.save(o);
-    }
-
-    public String deleteOrder(Long id) {
-        orepo.deleteById(id);
-        return "Deleted Successfully";
-    }
-
+     
 }
