@@ -1,13 +1,13 @@
 package com.example.customer_orders.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+
 
 @Entity
 public class Orders {
@@ -21,7 +21,7 @@ public class Orders {
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    @JsonIgnore
+    @JsonBackReference
     private Customer customer;
 
     public Orders() {
@@ -64,8 +64,5 @@ public class Orders {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
-
-    
-
-    
+   
 }

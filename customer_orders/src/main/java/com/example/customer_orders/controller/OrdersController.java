@@ -11,14 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.customer_orders.entity.Orders;
-import com.example.customer_orders.service.OrdersService;
-
+import com.example.customer_orders.service.CustomerService;
 @RestController
 @RequestMapping("/orders")
 public class OrdersController {
 
     @Autowired
-    private OrdersService oservice;
+    private CustomerService oservice;
 
     @GetMapping("/get/{id}")
     public Optional<Orders> getOrdersById(@PathVariable Long id) {

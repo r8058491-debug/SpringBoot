@@ -3,8 +3,11 @@ package com.example.customer_orders.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,12 +19,12 @@ public class Customer {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-
     private String customerName;
     private String customerEmail;
     private String country;
 
-    @OneToMany(mappedBy="customer",cascade=CascadeType.ALL)
+    @OneToMany(mappedBy="customer",cascade=CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval=true)
+    @JsonManagedReference
     private List<Orders> order=new ArrayList<>();
 
     public Customer(){}

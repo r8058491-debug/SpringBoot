@@ -29,7 +29,7 @@ public class CustomerController {
 
     @GetMapping("/getall")
     public List<Customer> getAll(){
-        return service.getAll();
+        return service.getAlls();
     }
 
     @GetMapping("/get/{id}")
@@ -37,8 +37,4 @@ public class CustomerController {
         return service.getCustomerById(id);
     }
 
-    @PutMapping("/updateid")
-    public Customer updateCustomerId(@RequestBody Customer customer){
-        return service.updateCustomerId(customer);
-    }
 }
