@@ -35,7 +35,6 @@ public class LibraryService {
         b.setBookName(books.getBookName());
         b.setTitle(books.getTitle());
         b.setType(books.getType());
-        b.setLibrary(books.getLibrary());
         return brepo.save(b);
     }
 

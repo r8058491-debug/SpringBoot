@@ -3,8 +3,11 @@ package com.example.library_book.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,7 +22,8 @@ public class Library {
 
     private String location;
 
-    @OneToMany(mappedBy="library",cascade=CascadeType.ALL)
+    @OneToMany(mappedBy="library",cascade=CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval=true)
+    @JsonManagedReference
     private List<Books> books=new ArrayList<>();
 
     public Library(){}
