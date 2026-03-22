@@ -1,5 +1,7 @@
 package com.example.author_blog.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,13 +19,15 @@ public class Posts {
     private String about;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name="author_id")
     private Author author;
 
     public Posts(){}
 
-    public Posts(String a){
+    public Posts(String a,Author author){
         this.about=a;
+        this.author=author;
     }
 
     public Long getId() {
