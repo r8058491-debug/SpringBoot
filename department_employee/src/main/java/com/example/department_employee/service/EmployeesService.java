@@ -22,7 +22,6 @@ public class EmployeesService{
         Employees e=erepo.findById(id).orElseThrow(() -> new RuntimeException("Error hai :"+id));
         e.setName(employees.getName());
         e.setAge(employees.getAge());
-        e.setDepartment(employees.getDepartment());
         e.setExpertise(employees.getExpertise());
         e.setSalary(employees.getSalary());
         return erepo.save(e);

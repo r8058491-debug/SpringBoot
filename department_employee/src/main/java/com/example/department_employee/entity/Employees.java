@@ -1,12 +1,13 @@
 package com.example.department_employee.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-
 
 @Entity
 public class Employees {
@@ -21,19 +22,19 @@ public class Employees {
     private String expertise;
 
     @ManyToOne
-
+    @JsonBackReference
     @JoinColumn(name = "dept_id")
     private Department department;
 
     public Employees() {
     }
 
-    public Employees(String n,int a,double s,String e,Department d){
-        this.name=n;
-        this.age=a;
-        this.salary=s;
-        this.expertise=e;
-        this.department=d;
+    public Employees(String n, int a, double s, String e, Department d) {
+        this.name = n;
+        this.age = a;
+        this.salary = s;
+        this.expertise = e;
+        this.department = d;
     }
 
     public Long getId() {
@@ -83,9 +84,5 @@ public class Employees {
     public void setDepartment(Department department) {
         this.department = department;
     }
-
-    
-
-    
 
 }
