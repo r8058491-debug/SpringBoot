@@ -20,14 +20,15 @@ public class Posts {
 
     @ManyToOne
     @JsonBackReference
-    @JoinColumn(name="author_id")
+    @JoinColumn(name = "author_id")
     private Author author;
 
-    public Posts(){}
+    public Posts() {
+    }
 
-    public Posts(String a,Author author){
-        this.about=a;
-        this.author=author;
+    public Posts(String a, Author author) {
+        this.about = a;
+        this.author = author;
     }
 
     public Long getId() {
@@ -53,7 +54,4 @@ public class Posts {
     public void setAuthor(Author author) {
         this.author = author;
     }
-
-    
-
 }
