@@ -43,6 +43,10 @@ public class SubscriptionAppService {
         return urepo.save(user);
     }
 
+    public List<User> getAllUser(){
+        return urepo.findAll();
+    }
+
     public List<ResponseDto> getAll() {
         List<SubscriptionApp> app = srepo.findAll();
         List<ResponseDto> list = new ArrayList<>();
@@ -84,9 +88,11 @@ public class SubscriptionAppService {
         dto.setUserName(app.getUser().getName());
         dto.setPlanType(app.getPlanType());
 
-        dto.setDaysRemaining(ChronoUnit.DAYS.between(LocalDate.now(), app.getEndDate()));
-
-        dto.setStatus(dto.getDaysRemaining() > 0 ? "Active " : "Expired");
+        // bhaiyo yeh kiya hai maine do date ka difference nikalne ke liye
+        Long days=ChronoUnit.DAYS.between(LocalDate.now(),app.getEndDate());
+        
+        dto.setDaysRemaining(days > 0 ? days : null);
+        dto.setStatus(days > 0 ? "Active " : "Expired");
 
         return dto;
 

@@ -2,10 +2,13 @@ package com.example.subscriptionsystem.dto;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 public class ResponseDto {
 
     String userName;
     String planType;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     Long daysRemaining;
     String status;
 
