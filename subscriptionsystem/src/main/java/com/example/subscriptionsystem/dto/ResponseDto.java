@@ -8,7 +8,10 @@ public class ResponseDto {
 
     String userName;
     String planType;
+
+    // Isko maine lagaya hai mujhe null nahi chahiye apne postman pr to daysRemaining pe null hoga to vo gayab ho jaayega samjhe bhaiyo!!
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    
     Long daysRemaining;
     String status;
 
